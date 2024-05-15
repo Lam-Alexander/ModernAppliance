@@ -15,9 +15,13 @@ public class Dishwasher extends Appliance{
 	
 	@Override
 	public String toString() {
-		return " [Dishwasher] ItemNumber: " + itemNumber + ", Brand: " + brand
-				+ ", Quantity: " + quantity + ", Wattage: " + wattage + ", Color: "
-				+ color + ", Price: " + price + ", Sound Rating:" + soundRating
-				+ ", Feature:" + feature;
+		return    " ItemNumber: " + itemNumber
+				+ "\n Brand: " + brand
+				+ "\n Quantity: " + quantity 
+				+ "\n Wattage: " + wattage 
+				+ "\n Color: " + color 
+				+ "\n Price: " + price 
+				+ "\n Sound Rating: " + soundRating
+				+ "\n Feature: " + feature + "\n";
 	}
 }
