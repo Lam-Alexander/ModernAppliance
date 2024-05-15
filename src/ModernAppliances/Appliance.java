@@ -12,8 +12,6 @@ public class Appliance {
 	
 	
 	// Constructor
-	
-	
 	public Appliance(String itemNumber, String brand, int quantity, int wattage, 
 			String color, double price) {
 		

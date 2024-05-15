@@ -178,10 +178,6 @@ public class Main {
         scanner.nextLine();
     }
     
-
-        
-    
-
     public static void displayApplianceByType(List<Appliance> appliances) {
         // Method implementation
     }

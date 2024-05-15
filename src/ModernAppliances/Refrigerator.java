@@ -13,8 +13,7 @@ public class Refrigerator extends Appliance{
 		super(itemNumber, brand, quantity, wattage, color, price);
 		this.numberOfDoors = numberOfDoors;
 		this.height = height;
-		this.width = width;
-		
+		this.width = width;		
 	}
 	
 	@Override
