@@ -15,13 +15,16 @@ public class Dishwasher extends Appliance{
 	
 	@Override
 	public String toString() {
-		return    " ItemNumber: " + itemNumber
-				+ "\n Brand: " + brand
-				+ "\n Quantity: " + quantity 
-				+ "\n Wattage: " + wattage 
-				+ "\n Color: " + color 
-				+ "\n Price: " + price 
+		String ConvertToText = switch (feature) {
+		case "Qt" -> "Quietest";
+		case "Qr" -> "Quieter";
+		case "Qu" -> "Quiet;";
+		case "M" -> "Moderate";
+		default -> String.valueOf(feature);
+		};
+		
+		return super.toString() 
 				+ "\n Sound Rating: " + soundRating
-				+ "\n Feature: " + feature + "\n";
+				+ "\n Feature: " + ConvertToText;
 	}
 }

@@ -118,28 +118,22 @@ public class Main {
         
         for(Appliance appliance : appliances) {
         	if(appliance.getBrand().equalsIgnoreCase(brand)) {
-        		
-        		
-        		 if(appliance instanceof Vacuum) {
+        			
+        		if(appliance instanceof Vacuum) {
         			vacuumList.add((Vacuum) appliance);	
         		} 
-        		 
         		else if (appliance instanceof Microwave) {
         			microwaveList.add((Microwave) appliance);
         		}
- 
         		else if (appliance instanceof Dishwasher) {
         			dishwasherList.add((Dishwasher) appliance);
-        		}
-        		
+        		}        		
         		else if (appliance instanceof Refrigerator) {
         			refrigeratorList.add((Refrigerator) appliance);
         		}
         	}
         }
-        
-       
-        
+
         if (!dishwasherList.isEmpty()) {
         	found = true;
         	System.out.println("\n[Matching Dishwasher]");
@@ -151,7 +145,7 @@ public class Main {
         
         if (!vacuumList.isEmpty()) {
         	found = true;
-        	System.out.println("[Matching Vacuums]");
+        	System.out.println("\n[Matching Vacuums]");
         	System.out.println("---------------------");
         	for (Vacuum vacuum : vacuumList) {
         		System.out.println(vacuum);
@@ -160,7 +154,8 @@ public class Main {
         
         if (!microwaveList.isEmpty()) {
         	found = true;
-        	System.out.println("Matching Microwave");
+        	System.out.println("\n[Matching Microwave]");
+        	System.out.println("---------------------");
         	for (Microwave microwave : microwaveList) {
         		System.out.println(microwave);
         	}
@@ -168,7 +163,8 @@ public class Main {
         
         if (!refrigeratorList.isEmpty()) {
         	found = true;
-        	System.out.println("Matching Refrigerator");
+        	System.out.println("\n[Matching Refrigerator]");
+        	System.out.println("---------------------");
         	for (Refrigerator refrigerator : refrigeratorList) {
         		System.out.println(refrigerator);
         	}
@@ -178,7 +174,7 @@ public class Main {
         	System.out.println("\nNo appliance found with that brand\n");
         }
         
-        System.out.println("Press the Enter key to continue...\n");
+        System.out.println("\nPress the Enter key to continue...\n");
         scanner.nextLine();
     }
     

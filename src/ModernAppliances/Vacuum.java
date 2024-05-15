@@ -15,14 +15,14 @@ public class Vacuum extends Appliance{
 	
 	@Override
 	public String toString() {
-		return    " ItemNumber: " + itemNumber
-				+ "\n Brand: " + brand
-				+ "\n Quantity: " + quantity 
-				+ "\n Wattage: " + wattage 
-				+ "\n Color: " + color 
-				+ "\n Price: " + price 
-				+ "\n Grade: " + grade
-				+ "\n BatteryVoltage: " + batteryVoltage + "\n";
-				
+	    String convertToText = switch (batteryVoltage) {
+	        case 18 -> "Low";
+	        case 24 -> "High";
+	        default -> String.valueOf(batteryVoltage);
+	    };
+
+	    return super.toString() 
+	    		+ "\n Grade: " + grade
+	            + "\n BatteryVoltage: " + convertToText;
 	}
 }

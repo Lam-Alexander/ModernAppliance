@@ -19,9 +19,9 @@ public class Refrigerator extends Appliance{
 	
 	@Override
 	public String toString() {
-		return " [Refrigerator] ItemNumber: " + itemNumber + ", Brand: " + brand
-				+ ", Quantity: " + quantity + ", Wattage: " + wattage + ", Color: "
-				+ color + ", Price: " + price + ", Number of Doors:" + numberOfDoors
-				+ ", Height" + height + ", Width" + width;
+		return super.toString() 
+				+ " Number of Doors: " + numberOfDoors
+				+ " Height: " + height 
+				+ "\nWidth: " + width;
 	}
 }

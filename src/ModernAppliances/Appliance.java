@@ -25,6 +25,25 @@ public class Appliance {
 		this.price = price;
 	}
 	
+	@Override
+	public String toString() {
+		String formattedPrice;
+		if (price == (int) price) {
+			formattedPrice = String.format("$%.0f", price);
+		}
+		
+		else {
+			formattedPrice = String.format("$%.2f", price);
+		}
+		
+	    return " ItemNumber: " + itemNumber
+	            + "\n Brand: " + brand
+	            + "\n Quantity: " + quantity
+	            + "\n Wattage: " + wattage
+	            + "\n Color: " + color
+	            + "\n Price: " + formattedPrice;
+	}
+	
 	public boolean isCheckedOut() {
 		return checkedOut;
 	}
