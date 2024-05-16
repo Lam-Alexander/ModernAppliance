@@ -17,6 +17,6 @@ public class Microwave extends Appliance {
 	public String toString() {
 		return super.toString()
 				+ "\n Cappacity: " + capacity 
-				+ "\n RoomType: " + roomType + "\n";
+				+ "\n RoomType: " + roomType;
 	}
 }

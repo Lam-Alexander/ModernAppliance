@@ -23,6 +23,10 @@ public class Vacuum extends Appliance{
 
 	    return super.toString() 
 	    		+ "\n Grade: " + grade
-	            + "\n BatteryVoltage: " + convertToText;
+	            + "\n Battery voltage: " + convertToText;
+	}
+	
+	public int getBatteryVoltage() {
+		return batteryVoltage;
 	}
 }

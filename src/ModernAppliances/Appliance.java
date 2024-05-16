@@ -34,7 +34,7 @@ public class Appliance {
 			formattedPrice = String.format("$%.2f", price);
 		}
 		
-	    return " ItemNumber: " + itemNumber
+	    return "\n ItemNumber: " + itemNumber
 	            + "\n Brand: " + brand
 	            + "\n Quantity: " + quantity
 	            + "\n Wattage: " + wattage

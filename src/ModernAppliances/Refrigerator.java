@@ -18,9 +18,20 @@ public class Refrigerator extends Appliance{
 	
 	@Override
 	public String toString() {
+		String convertToText = switch (numberOfDoors) {
+			case 2 -> "double door";
+			case 3 -> "three doors";
+			case 4 -> "four doors";
+			default -> String.valueOf(numberOfDoors);
+		};
+		
 		return super.toString() 
-				+ " Number of Doors: " + numberOfDoors
-				+ " Height: " + height 
-				+ "\nWidth: " + width;
+				+ "\n Number of Doors: " + convertToText
+				+ "\n Height: " + height 
+				+ "\n Width: " + width;
+	}
+	
+	public int getNumberOfDoors() {
+		return numberOfDoors;
 	}
 }

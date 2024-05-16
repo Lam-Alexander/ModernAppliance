@@ -3,6 +3,7 @@ package ModernAppliances;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
 
@@ -35,11 +36,13 @@ public class Main {
 	    			findAppliancesByBrand(appliances);
 					break;
 	    		case 3:
-	    			System.out.println("You Selected Option 3");
+	    			displayApplianceByType(appliances);
 					break;
 	    			
 	    		case 4:
-	    			System.out.println("You Selected Option 4");
+	    			System.out.print("\nEnter number of appliances: \n");
+	    			int userNumberForRandomAppliances = scanner.nextInt();
+	    			produceRandomApplianceList(appliances, userNumberForRandomAppliances);
 					break;
 					
 	    		case 5:
@@ -98,7 +101,7 @@ public class Main {
             System.out.println("\nNo appliances found with that item number.\n");
         }
         
-        System.out.println("Press the Enter key to continue...\n");
+        System.out.println("\nPress the Enter key to continue...\n");
         scanner.nextLine();
 //        scanner.close();
     }
@@ -179,10 +182,114 @@ public class Main {
     }
     
     public static void displayApplianceByType(List<Appliance> appliances) {
-        // Method implementation
+
+        Scanner scanner = new Scanner(System.in);
+    	
+        System.out.println("\nAppliance Types");
+        System.out.println("1 - Refrigerators");
+        System.out.println("2 - Vacuums");
+        System.out.println("3 - Microwaves");
+        System.out.println("4 - Dishwashers\n");
+        System.out.print("Enter type of appliance: ");
+        
+        int type = scanner.nextInt();
+        
+       List<Vacuum> vacuumList = new ArrayList<>();
+       List<Microwave> microwaveList = new ArrayList<>();
+       List<Dishwasher> dishwasherList = new ArrayList<>();
+       List<Refrigerator> refrigeratorList = new ArrayList<>();
+       
+       boolean doesItemExist = false;
+        
+        switch (type) {
+        	case 1:
+        		System.out.print("\nEnter the number of doors: 2 (double door), 3 (three doors) or 4 (four doors): ");
+        		int numberOfDoors = scanner.nextInt();
+        		
+        		for (Appliance appliance : appliances) {
+        			if (appliance instanceof Refrigerator) {
+        				
+        				// This is casting which tells the compiler to treat this like a refrigerator object
+        				Refrigerator refrigerator = (Refrigerator) appliance;
+        				if (refrigerator.getNumberOfDoors() == numberOfDoors) {
+        					refrigeratorList.add(refrigerator);
+        					doesItemExist = true;
+        				}
+        			}
+        		}
+        		
+                if (doesItemExist == false) {
+                	System.out.println("\nNo matching item found with your search.\n");
+                	}
+                
+                else {
+                	System.out.println("\n[Matching Refrigerator]");
+                	System.out.println("---------------------");
+                	for (Refrigerator refrigerator : refrigeratorList) {
+                		System.out.println(refrigerator);
+                	}
+                }
+        		break;
+        		
+        	case 2:
+        		System.out.print("\nEnter battery voltage value 18 (low) or 24 (high): ");
+        		int batteryVoltage = scanner.nextInt();
+        		
+        		for (Appliance appliance : appliances) {
+        			if (appliance instanceof Vacuum) {
+        				Vacuum vacuum = (Vacuum) appliance;
+        				if (vacuum.getBatteryVoltage() == batteryVoltage) {
+        					vacuumList.add(vacuum);
+        					doesItemExist = true;
+        				}
+        			}
+        		}
+        		
+                if (doesItemExist == false) {
+                	System.out.println("\nNo matching item found with your search.\n");
+                	}
+                
+                else {
+                	System.out.println("\n[Matching Vacuums]");
+                	System.out.println("---------------------");
+                	for (Vacuum vacuum : vacuumList) {
+                		System.out.println(vacuum);
+                	}
+                }
+        		break;
+        		
+        	case 3:
+        		// Create logic for Microwaves
+        		break;
+        	case 4:
+        		// Create method for Dishwashers
+        		
+        		break;
+        }
+        
+        System.out.println("\nPress the Enter key to continue...\n");
+        scanner.nextLine();
+        scanner.nextLine();
     }
 
-    public static void produceRandomApplianceList(List<Appliance> appliances, String filename) {
-        // Method implementation
+    public static void produceRandomApplianceList(List<Appliance> appliances, int numRandomAppliances) {
+        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("[Random Appliances]:");
+    	System.out.println("---------------------");
+        for (int i = 0; i < numRandomAppliances; i++) {
+            // Generate random index to select an appliance from the list
+            int randomIndex = random.nextInt(appliances.size());
+            
+            // Get the randomly selected appliance
+            Appliance randomAppliance = appliances.get(randomIndex);
+            
+            // Output the random appliance
+            System.out.println(randomAppliance);
+        }
+        
+        System.out.println("Press the Enter key to continue...\n");
+        scanner.nextLine();
     }
 }
