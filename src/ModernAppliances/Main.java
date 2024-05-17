@@ -4,17 +4,18 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 public class Main {
 
     public static void main(String[] args) {
         List<Appliance> appliances = ApplianceReader.readAppliancesFromFile("appliances.txt");
-//        
-//        for (Appliance appliance : appliances) {
-//        	System.out.println(appliance);
-//        }
     	Scanner scanner = new Scanner(System.in);
     	boolean exit = false;
+    	
     	while (!exit) {
     		System.out.println("Welcome to Modern Appliances!");
     		System.out.println("How may we assit you?\n");
@@ -40,12 +41,13 @@ public class Main {
 					break;
 	    			
 	    		case 4:
-	    			System.out.print("\nEnter number of appliances: \n");
+	    			System.out.print("\nEnter number of appliances: ");
 	    			int userNumberForRandomAppliances = scanner.nextInt();
 	    			produceRandomApplianceList(appliances, userNumberForRandomAppliances);
 					break;
 					
 	    		case 5:
+	    			saveAndExit(appliances);
 	    			System.out.println("\nYou have successfuly exit the program!");
 	    			exit = true;
 	    			break;
@@ -58,7 +60,6 @@ public class Main {
     	scanner.close();
     }
     
- // Other methods for user interactions and persistence
     public static void checkOutAppliance(List<Appliance> appliances) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nEnter the item number of an appliance: ");
@@ -66,7 +67,6 @@ public class Main {
 
         Appliance selectedAppliance = null;
 
-        // Find the appliance with the entered item number
         for (Appliance appliance : appliances) {
             if (appliance.getItemNumber().equals(itemNumber)) {
                 selectedAppliance = appliance;
@@ -76,19 +76,13 @@ public class Main {
 
         if (selectedAppliance != null) {
         	
-            // Appliance with the entered item number found
             if (selectedAppliance.getQuantity() > 0 && !selectedAppliance.isCheckedOut()) {
-            	
-                // Mark the appliance as checked out
                 selectedAppliance.setCheckedOut(true);
-                
-                // Decrease the quantity of the appliance
                 selectedAppliance.setQuantity(selectedAppliance.getQuantity() - 1);
-                
+                appliances.set(appliances.indexOf(selectedAppliance), selectedAppliance);
                 System.out.println("\nAppliance \"" + itemNumber + "\" has been checked out.\n");
                 
             } else if (selectedAppliance.getQuantity() == 0) {
-            	
                 System.out.println("\nThe appliance " + itemNumber + " is out of stock.\n");
                 
             } else {
@@ -96,14 +90,11 @@ public class Main {
             }
             
         } else {
-        	
-            // Appliance with the entered item number not found
             System.out.println("\nNo appliances found with that item number.\n");
         }
         
         System.out.println("\nPress the Enter key to continue...\n");
         scanner.nextLine();
-//        scanner.close();
     }
 
 
@@ -181,6 +172,23 @@ public class Main {
         scanner.nextLine();
     }
     
+
+
+    public static void saveAndExit(List<Appliance> appliances) {
+        String filename = "appliances.txt"; 
+        String directory = "src/ModernAppliances"; 
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(Paths.get(directory, filename).toString()))) {
+            for (Appliance appliance : appliances) {
+                writer.write(appliance.toFileString());
+                writer.newLine();
+            }
+            System.out.println("\nAppliance data saved successfully to " + filename);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void displayApplianceByType(List<Appliance> appliances) {
 
         Scanner scanner = new Scanner(System.in);
@@ -259,11 +267,58 @@ public class Main {
         		break;
         		
         	case 3:
-        		// Create logic for Microwaves
-        		break;
-        	case 4:
-        		// Create method for Dishwashers
+        		System.out.print("Room where the microwave will be installed: K (kitchen) or W (Work site): ");
+        		String roomType = scanner.next();
         		
+        		for (Appliance appliance : appliances) {
+        			if (appliance instanceof Microwave) {
+        				Microwave microwave = (Microwave) appliance;
+        				if (microwave.getRoomType().equalsIgnoreCase(roomType)) {
+        					microwaveList.add(microwave);
+        					doesItemExist = true;
+        				}
+        			}
+        		}
+        		
+        		if (doesItemExist == false) {
+                	System.out.println("\nNo matching item found with your search.\n");
+        		}
+        		
+        		else {
+                	System.out.println("\n[Matching Microwave]");
+                	System.out.println("---------------------");
+                	for (Microwave microwave : microwaveList) {
+                		System.out.println(microwave);
+                	}
+        		}
+        		break;
+        		
+        	case 4:
+        		System.out.print("\nEnter the sound rating of the dishwasher: Qt (Quietest), Qr (Quieter), Qu (Quiet) or M (Moderate): ");
+        		String soundRating = scanner.next();
+        		
+        		for (Appliance appliance : appliances) {
+        			if (appliance instanceof Dishwasher) {
+        				Dishwasher dishwasher = (Dishwasher) appliance;
+        				if (dishwasher.getSoundRating().equalsIgnoreCase(soundRating)) {
+        					dishwasherList.add(dishwasher);
+        					doesItemExist = true;
+        				}
+        				
+        			}
+        		}
+        		
+        		if (doesItemExist == false) {
+                	System.out.println("\nNo matching item found with your search.\n");
+        		}
+        		
+        		else {
+                	System.out.println("\n[Matching Dishwasher]");
+                	System.out.println("---------------------");
+                	for (Dishwasher dishwasher : dishwasherList) {
+                		System.out.println(dishwasher);
+                	}
+        		}
         		break;
         }
         
@@ -276,20 +331,15 @@ public class Main {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("[Random Appliances]:");
+        System.out.println("\n[Random Appliances]:");
     	System.out.println("---------------------");
         for (int i = 0; i < numRandomAppliances; i++) {
-            // Generate random index to select an appliance from the list
             int randomIndex = random.nextInt(appliances.size());
-            
-            // Get the randomly selected appliance
             Appliance randomAppliance = appliances.get(randomIndex);
-            
-            // Output the random appliance
             System.out.println(randomAppliance);
         }
         
-        System.out.println("Press the Enter key to continue...\n");
+        System.out.println("\nPress the Enter key to continue...\n");
         scanner.nextLine();
     }
 }

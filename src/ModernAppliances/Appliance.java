@@ -34,7 +34,7 @@ public class Appliance {
 			formattedPrice = String.format("$%.2f", price);
 		}
 		
-	    return "\n ItemNumber: " + itemNumber
+	    return "\n Item Number: " + itemNumber
 	            + "\n Brand: " + brand
 	            + "\n Quantity: " + quantity
 	            + "\n Wattage: " + wattage
@@ -65,6 +65,20 @@ public class Appliance {
 	public String getBrand() {
 		return brand;
 	}
+
+	public String toFileString() {
+	    // Check if the price is a whole number
+	    String formattedPrice;
+	    if (price % 1 == 0) {
+	        formattedPrice = String.format("%.0f", price); // Format as whole number without "$"
+	    } else {
+	        formattedPrice = String.format("%.2f", price); // Format with two decimal places without "$"
+	    }
+	    // Generate string representation in the format: itemNumber;brand;quantity;wattage;color;price
+	    return itemNumber + ";" + brand + ";" + quantity + ";" + wattage + ";" + color + ";" + formattedPrice;
+	}
+
+
 
 	
 }

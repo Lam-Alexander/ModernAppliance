@@ -29,4 +29,11 @@ public class Vacuum extends Appliance{
 	public int getBatteryVoltage() {
 		return batteryVoltage;
 	}
+	
+	@Override
+	public String toFileString() {
+	    // Generate string representation including attributes specific to Vacuum,
+	    // as well as common attributes inherited from the superclass
+	    return super.toFileString() + ";" + grade + ";" + batteryVoltage;
+	}
 }

@@ -19,9 +19,9 @@ public class Refrigerator extends Appliance{
 	@Override
 	public String toString() {
 		String convertToText = switch (numberOfDoors) {
-			case 2 -> "double door";
-			case 3 -> "three doors";
-			case 4 -> "four doors";
+			case 2 -> "Double Door";
+			case 3 -> "Three Doors";
+			case 4 -> "Four Doors";
 			default -> String.valueOf(numberOfDoors);
 		};
 		
@@ -33,5 +33,12 @@ public class Refrigerator extends Appliance{
 	
 	public int getNumberOfDoors() {
 		return numberOfDoors;
+	}
+	
+	@Override
+	public String toFileString() {
+	    // Generate string representation including attributes specific to Vacuum,
+	    // as well as common attributes inherited from the superclass
+	    return super.toFileString() + ";" + numberOfDoors + ";" + height + ";" + width;
 	}
 }

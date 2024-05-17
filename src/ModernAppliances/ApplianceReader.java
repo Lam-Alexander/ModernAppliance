@@ -40,7 +40,8 @@ public class ApplianceReader {
                     break;
                     
                 case '2':
-                    appliance = new Vacuum(parts[0],
+                    appliance = new Vacuum(
+                    		parts[0],
                     		parts[1], 
                     		Integer.parseInt(parts[2]),
                     		Integer.parseInt(parts[3]), 
@@ -51,7 +52,8 @@ public class ApplianceReader {
                     break;
                     
                 case '3':
-                    appliance = new Microwave(parts[0],
+                    appliance = new Microwave(
+                    		parts[0],
                     		parts[1],
                     		Integer.parseInt(parts[2]),
                     		Integer.parseInt(parts[3]),
@@ -62,7 +64,8 @@ public class ApplianceReader {
                     break;
                 case '4':
                 case '5':
-                    appliance = new Dishwasher(parts[0],
+                    appliance = new Dishwasher(
+                    		parts[0],
                     		parts[1],
                     		Integer.parseInt(parts[2]),
                     		Integer.parseInt(parts[3]),

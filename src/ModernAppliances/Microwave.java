@@ -15,8 +15,25 @@ public class Microwave extends Appliance {
 	
 	@Override
 	public String toString() {
+		String convertToText = switch (roomType) {
+		case "K" -> "Kitchen";
+		case "W" -> "Work Site";
+		default -> String.valueOf(roomType);
+		};
+		
 		return super.toString()
 				+ "\n Cappacity: " + capacity 
-				+ "\n RoomType: " + roomType;
+				+ "\n RoomType: " + convertToText;
+	}
+	
+	public String getRoomType() {
+		return roomType;
+	}
+	
+	@Override
+	public String toFileString() {
+	    // Generate string representation including attributes specific to Vacuum,
+	    // as well as common attributes inherited from the superclass
+	    return super.toFileString() + ";" + capacity + ";" + roomType;
 	}
 }
