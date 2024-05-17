@@ -16,6 +16,7 @@ public class Main {
     	Scanner scanner = new Scanner(System.in);
     	boolean exit = false;
     	
+    	// main menu options
     	while (!exit) {
     		System.out.println("Welcome to Modern Appliances!");
     		System.out.println("How may we assit you?\n");
@@ -27,6 +28,7 @@ public class Main {
     		
     		System.out.print("Enter option: ");
     		
+    		// takes user inputs and choosing case depending on what number they enter
     		int choice = scanner.nextInt();
     		switch (choice) {
 	    		case 1:
@@ -60,6 +62,7 @@ public class Main {
     	scanner.close();
     }
     
+    // allows user to checkout appliance if it's available
     public static void checkOutAppliance(List<Appliance> appliances) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nEnter the item number of an appliance: ");
@@ -97,7 +100,7 @@ public class Main {
         scanner.nextLine();
     }
 
-
+    // allow users to search the data by brand
     public static void findAppliancesByBrand(List<Appliance> appliances) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nEnter a brand to search for: ");
@@ -173,7 +176,7 @@ public class Main {
     }
     
 
-
+    // saves and exit the program by writing to txt
     public static void saveAndExit(List<Appliance> appliances) {
         String filename = "appliances.txt"; 
         String directory = "src/ModernAppliances"; 
@@ -189,6 +192,7 @@ public class Main {
         }
     }
 
+    // allows user to search by appliance type
     public static void displayApplianceByType(List<Appliance> appliances) {
 
         Scanner scanner = new Scanner(System.in);
@@ -326,7 +330,7 @@ public class Main {
         scanner.nextLine();
         scanner.nextLine();
     }
-
+    // generates a list of random appliance based on number enter by user
     public static void produceRandomApplianceList(List<Appliance> appliances, int numRandomAppliances) {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);

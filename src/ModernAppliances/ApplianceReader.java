@@ -10,6 +10,8 @@ import java.util.List;
 
 public class ApplianceReader {
 
+	
+	// Reads from txt and assigns correct object to their corresponding class
     public static List<Appliance> readAppliancesFromFile(String filename) {
         List<Appliance> appliances = new ArrayList<>();
         

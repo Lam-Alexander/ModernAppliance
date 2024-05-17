@@ -13,6 +13,7 @@ public class Vacuum extends Appliance{
 		this.batteryVoltage = batteryVoltage;
 	}
 	
+	// convert numbers to text, display data so it's human readable
 	@Override
 	public String toString() {
 	    String convertToText = switch (batteryVoltage) {
@@ -26,14 +27,14 @@ public class Vacuum extends Appliance{
 	            + "\n Battery voltage: " + convertToText;
 	}
 	
+	// used it displayByType to search by battery voltage
 	public int getBatteryVoltage() {
 		return batteryVoltage;
 	}
 	
+	// writes to txt file in format
 	@Override
 	public String toFileString() {
-	    // Generate string representation including attributes specific to Vacuum,
-	    // as well as common attributes inherited from the superclass
 	    return super.toFileString() + ";" + grade + ";" + batteryVoltage;
 	}
 }

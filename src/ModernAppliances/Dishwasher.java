@@ -13,10 +13,12 @@ public class Dishwasher extends Appliance{
 		this.soundRating = soundRating;
 	}
 	
+	// used in displayByType method to search by sound rating.
 	public String getSoundRating() {
 		return soundRating;
 	}
 	
+	// converts data to human readable, also converts terms to full text
 	@Override
 	public String toString() {
 		String convertToText = switch (soundRating) {
@@ -32,10 +34,9 @@ public class Dishwasher extends Appliance{
 				+ "\n Sound Rating: " + convertToText;
 	}
 	
+	// Writes to txt file in correct format
 	@Override
 	public String toFileString() {
-	    // Generate string representation including attributes specific to Vacuum,
-	    // as well as common attributes inherited from the superclass
 	    return super.toFileString() + ";" + feature + ";" + soundRating;
 	}
 }

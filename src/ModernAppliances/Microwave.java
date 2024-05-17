@@ -13,6 +13,7 @@ public class Microwave extends Appliance {
 		this.roomType = roomType;
 	}
 	
+	// converts terms to full on text, also formats data so it's human readable
 	@Override
 	public String toString() {
 		String convertToText = switch (roomType) {
@@ -26,14 +27,14 @@ public class Microwave extends Appliance {
 				+ "\n RoomType: " + convertToText;
 	}
 	
+	// used in displayByType to search roomType
 	public String getRoomType() {
 		return roomType;
 	}
 	
+	// formats data so it's written to txt in correct format
 	@Override
 	public String toFileString() {
-	    // Generate string representation including attributes specific to Vacuum,
-	    // as well as common attributes inherited from the superclass
 	    return super.toFileString() + ";" + capacity + ";" + roomType;
 	}
 }

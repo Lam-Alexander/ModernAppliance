@@ -22,7 +22,7 @@ public class Appliance {
 		this.color = color;
 		this.price = price;
 	}
-	
+	// toString method to make data human readable, also formatting decimals to display correctly
 	@Override
 	public String toString() {
 		String formattedPrice;
@@ -67,15 +67,14 @@ public class Appliance {
 	}
 
 	public String toFileString() {
-	    // Check if the price is a whole number
+		// formats the price depending on decimals to write correctly to txt
 	    String formattedPrice;
 	    if (price % 1 == 0) {
-	        formattedPrice = String.format("%.0f", price); // Format as whole number without "$"
+	        formattedPrice = String.format("%.0f", price);
 	    } else {
-	        formattedPrice = String.format("%.2f", price); // Format with two decimal places without "$"
+	        formattedPrice = String.format("%.2f", price);
 	    }
-	    // Generate string representation in the format: itemNumber;brand;quantity;wattage;color;price
-	    return itemNumber + ";" + brand + ";" + quantity + ";" + wattage + ";" + color + ";" + formattedPrice;
+	    	    return itemNumber + ";" + brand + ";" + quantity + ";" + wattage + ";" + color + ";" + formattedPrice;
 	}
 
 

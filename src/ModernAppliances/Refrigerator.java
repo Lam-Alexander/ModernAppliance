@@ -16,6 +16,7 @@ public class Refrigerator extends Appliance{
 		this.width = width;		
 	}
 	
+	// convert numbers to text, formats data so it's human readable
 	@Override
 	public String toString() {
 		String convertToText = switch (numberOfDoors) {
@@ -31,14 +32,15 @@ public class Refrigerator extends Appliance{
 				+ "\n Width: " + width;
 	}
 	
+	// used in displayByType to search for number of doors.
 	public int getNumberOfDoors() {
 		return numberOfDoors;
 	}
 	
+	
+	// writes to txt file in correct format
 	@Override
 	public String toFileString() {
-	    // Generate string representation including attributes specific to Vacuum,
-	    // as well as common attributes inherited from the superclass
 	    return super.toFileString() + ";" + numberOfDoors + ";" + height + ";" + width;
 	}
 }
